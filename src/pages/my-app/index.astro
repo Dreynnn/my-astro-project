@@ -1,0 +1,40 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import PortfolioHero from '~/components/widgets/PortfolioHero.astro';
+import PortfolioAbout from '~/components/widgets/PortfolioAbout.astro';
+import PortfolioProjects from '~/components/widgets/PortfolioProjects.astro';
+import PortfolioSkills from '~/components/widgets/PortfolioSkills.astro';
+import PortfolioExperience from '~/components/widgets/PortfolioExperience.astro';
+import PortfolioContact from '~/components/widgets/PortfolioContact.astro';
+
+const metadata = {
+  title: 'Portfolio - Professional Developer & Designer',
+  description: 'Professional portfolio showcasing web development projects, skills, and experience. Specializing in modern web technologies and user experience design.',
+  keywords: 'portfolio, web developer, frontend developer, full-stack developer, React, Vue, Astro, TypeScript',
+  openGraph: {
+    title: 'Portfolio - Professional Developer & Designer',
+    description: 'Professional portfolio showcasing web development projects, skills, and experience.',
+    type: 'website',
+  },
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <PortfolioHero />
+
+  <!-- About Section -->
+  <PortfolioAbout />
+
+  <!-- Skills Section -->
+  <PortfolioSkills />
+
+  <!-- Projects Section -->
+  <PortfolioProjects />
+
+  <!-- Experience Section -->
+  <PortfolioExperience />
+
+  <!-- Contact Section -->
+  <PortfolioContact />
+</Layout> 

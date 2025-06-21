@@ -1,0 +1,139 @@
+---
+import { personalData } from '~/data/portfolio/personal';
+---
+
+<section id="about" class="py-16 md:py-20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="mx-auto max-w-4xl">
+      <!-- Section Header -->
+      <div class="mb-12 text-center">
+        <h2 class="mb-4 text-3xl font-bold leading-tight text-slate-900 dark:text-white md:text-4xl">
+          About Me
+        </h2>
+        <p class="text-lg text-slate-600 dark:text-slate-400">
+          Get to know me better
+        </p>
+      </div>
+
+      <!-- Professional Summary -->
+      <div class="mb-12">
+        <h3 class="mb-6 text-2xl font-semibold text-slate-900 dark:text-white">
+          Professional Summary
+        </h3>
+        <div class="prose prose-lg max-w-none text-slate-600 dark:text-slate-400">
+          <p class="mb-4">
+            {personalData.summary}
+          </p>
+          <p>
+            I believe in writing clean, maintainable code and creating user experiences that are both beautiful and functional. 
+            My approach combines technical expertise with creative problem-solving to deliver solutions that exceed expectations.
+          </p>
+        </div>
+      </div>
+
+      <!-- Education & Certifications -->
+      <div class="grid gap-8 md:grid-cols-2">
+        <!-- Education -->
+        <div>
+          <h3 class="mb-6 text-2xl font-semibold text-slate-900 dark:text-white">
+            Education
+          </h3>
+          <div class="space-y-6">
+            {personalData.education.map((edu) => (
+              <div class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+                <div class="mb-2 flex items-center">
+                  <i class="icon icon-tabler icon-tabler-school mr-3 h-6 w-6 text-blue-600 dark:text-blue-400"></i>
+                  <h4 class="text-lg font-semibold text-slate-900 dark:text-white">
+                    {edu.degree}
+                  </h4>
+                </div>
+                <p class="mb-2 text-slate-600 dark:text-slate-400">
+                  {edu.school}
+                </p>
+                <p class="mb-2 text-sm text-slate-500 dark:text-slate-500">
+                  {edu.year}
+                </p>
+                <p class="text-sm text-slate-600 dark:text-slate-400">
+                  {edu.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div>
+          <h3 class="mb-6 text-2xl font-semibold text-slate-900 dark:text-white">
+            Certifications
+          </h3>
+          <div class="space-y-6">
+            {personalData.certifications.map((cert) => (
+              <div class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+                <div class="mb-2 flex items-center">
+                  <i class="icon icon-tabler icon-tabler-certificate mr-3 h-6 w-6 text-green-600 dark:text-green-400"></i>
+                  <h4 class="text-lg font-semibold text-slate-900 dark:text-white">
+                    {cert.name}
+                  </h4>
+                </div>
+                <p class="mb-2 text-slate-600 dark:text-slate-400">
+                  {cert.issuer}
+                </p>
+                <p class="text-sm text-slate-500 dark:text-slate-500">
+                  {cert.year}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Highlights -->
+      <div class="mt-12">
+        <h3 class="mb-6 text-2xl font-semibold text-slate-900 dark:text-white">
+          What I Bring to the Table
+        </h3>
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="text-center">
+            <div class="mb-4 flex justify-center">
+              <div class="flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900">
+                <i class="icon icon-tabler icon-tabler-code h-8 w-8 text-blue-600 dark:text-blue-400"></i>
+              </div>
+            </div>
+            <h4 class="mb-2 text-lg font-semibold text-slate-900 dark:text-white">
+              Clean Code
+            </h4>
+            <p class="text-slate-600 dark:text-slate-400">
+              Writing maintainable, well-documented code that follows industry best practices
+            </p>
+          </div>
+          <div class="text-center">
+            <div class="mb-4 flex justify-center">
+              <div class="flex h-16 w-16 items-center justify-center rounded-full bg-green-100 dark:bg-green-900">
+                <i class="icon icon-tabler icon-tabler-users h-8 w-8 text-green-600 dark:text-green-400"></i>
+              </div>
+            </div>
+            <h4 class="mb-2 text-lg font-semibold text-slate-900 dark:text-white">
+              Team Collaboration
+            </h4>
+            <p class="text-slate-600 dark:text-slate-400">
+              Working effectively with cross-functional teams and mentoring junior developers
+            </p>
+          </div>
+          <div class="text-center">
+            <div class="mb-4 flex justify-center">
+              <div class="flex h-16 w-16 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900">
+                <i class="icon icon-tabler icon-tabler-rocket h-8 w-8 text-purple-600 dark:text-purple-400"></i>
+              </div>
+            </div>
+            <h4 class="mb-2 text-lg font-semibold text-slate-900 dark:text-white">
+              Performance Focus
+            </h4>
+            <p class="text-slate-600 dark:text-slate-400">
+              Optimizing applications for speed, scalability, and user experience
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 

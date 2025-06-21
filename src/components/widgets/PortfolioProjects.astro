@@ -1,0 +1,159 @@
+---
+import { projectsData } from '~/data/portfolio/projects';
+---
+
+<section id="projects" class="py-16 md:py-20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <!-- Section Header -->
+    <div class="mb-12 text-center">
+      <h2 class="mb-4 text-3xl font-bold leading-tight text-slate-900 dark:text-white md:text-4xl">
+        Featured Projects
+      </h2>
+      <p class="text-lg text-slate-600 dark:text-slate-400">
+        A showcase of my recent work and technical capabilities
+      </p>
+    </div>
+
+    <!-- Project Categories Filter -->
+    <div class="mb-8 flex flex-wrap justify-center gap-2">
+      {['All', 'Full-Stack', 'Frontend', 'Backend'].map((category) => (
+        <button
+          class="rounded-full bg-slate-200 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-blue-600 hover:text-white dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-blue-600 dark:hover:text-white"
+          data-category={category === 'All' ? 'all' : category.toLowerCase()}
+        >
+          {category}
+        </button>
+      ))}
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {projectsData.featured.map((project) => (
+        <div
+          class="group rounded-lg border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:shadow-lg dark:border-slate-700 dark:bg-slate-800"
+          data-category={project.category.toLowerCase()}
+        >
+          <!-- Project Image -->
+          <div class="relative overflow-hidden rounded-t-lg">
+            <img
+              src={project.image}
+              alt={project.title}
+              class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-black bg-opacity-0 transition-all duration-300 group-hover:bg-opacity-20"></div>
+            <div class="absolute top-4 right-4">
+              <span class="rounded-full bg-blue-600 px-3 py-1 text-xs font-medium text-white">
+                {project.category}
+              </span>
+            </div>
+          </div>
+
+          <!-- Project Content -->
+          <div class="p-6">
+            <h3 class="mb-3 text-xl font-semibold text-slate-900 dark:text-white">
+              {project.title}
+            </h3>
+            <p class="mb-4 text-slate-600 dark:text-slate-400">
+              {project.description}
+            </p>
+
+            <!-- Technologies -->
+            <div class="mb-6 flex flex-wrap gap-2">
+              {project.technologies.map((tech) => (
+                <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-slate-700 dark:text-slate-300">
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <!-- Project Links -->
+            <div class="flex gap-3">
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex flex-1 items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
+                >
+                  <i class="icon icon-tabler icon-tabler-external-link mr-2 h-4 w-4"></i>
+                  Live Demo
+                </a>
+              )}
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex flex-1 items-center justify-center rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 dark:focus:ring-offset-slate-900"
+                >
+                  <i class="icon icon-tabler icon-tabler-brand-github mr-2 h-4 w-4"></i>
+                  Code
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- View More Projects -->
+    <div class="mt-12 text-center">
+      <a
+        href="https://github.com/alexjohnson"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center rounded-md border border-slate-300 bg-white px-6 py-3 text-center font-medium text-slate-700 transition-colors hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 dark:focus:ring-offset-slate-900"
+      >
+        <i class="icon icon-tabler icon-tabler-brand-github mr-2 h-5 w-5"></i>
+        View More on GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Project filtering functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('[data-category]');
+    const projectCards = document.querySelectorAll('[data-category]');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const selectedCategory = this.getAttribute('data-category');
+        
+        // Update active button
+        filterButtons.forEach(btn => {
+          btn.classList.remove('bg-blue-600', 'text-white');
+          btn.classList.add('bg-slate-200', 'text-slate-700', 'dark:bg-slate-700', 'dark:text-slate-300');
+        });
+        this.classList.remove('bg-slate-200', 'text-slate-700', 'dark:bg-slate-700', 'dark:text-slate-300');
+        this.classList.add('bg-blue-600', 'text-white');
+
+        // Filter projects
+        projectCards.forEach(card => {
+          const cardCategory = card.getAttribute('data-category');
+          if (selectedCategory === 'all' || cardCategory === selectedCategory) {
+            card.style.display = 'block';
+            card.style.animation = 'fadeIn 0.5s ease-in-out';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>
+
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style> 
